@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias</title>
+</head>
+<body>
+
+    <h1>Cadastrar Categoria de Notícia</h1>
+
+    <form action="/categorias" method="POST">
+
+        <label for="nome">Nome da categoria:</label><br>
+        <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Ex.: Esportes"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <hr>
+
+    <h2>Categorias</h2>
+
+    <ul>
+        <li>Política</li>
+        <li>Esportes</li>
+        <li>Tecnologia</li>
+        <li>Economia</li>
+        <li>Entretenimento</li>
+        <li>Saúde</li>
+    </ul>
+
+    <br>
+
+    <a href="/">Voltar para a página inicial</a>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+
+    <h1>Cadastro de Usuário</h1>
+
+    <form action="/auth/cadastro" method="POST">
+
+        <div>
+            <label for="nome">Nome</label><br>
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite seu nome"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label for="email">E-mail</label><br>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label for="senha">Senha</label><br>
+            <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Digite sua senha"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label for="confirmarSenha">Confirmar Senha</label><br>
+            <input
+                type="password"
+                id="confirmarSenha"
+                name="confirmarSenha"
+                placeholder="Confirme sua senha"
+                required
+            >
+        </div>
+
+        <br>
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <p>
+        Já possui uma conta?
+        <a href="/login">Fazer login</a>
+    </p>
+
+</body>
+</html>
