@@ -10,8 +10,20 @@ export class UsuarioController {
         res.json(repository.listar());
     }
 
-    cadastrar(req: Request, res: Response): void {
+    buscar(req: Request, res: Response): void {
+        const id = Number(req.params.id);
 
+        const usuario = repository.buscar(id);
+
+        if (usuario === null) {
+            res.status(404).json({ mensagem: "Usuário não encontrado." });
+            return;
+        }
+
+        res.json(usuario);
+    }
+
+    cadastrar(req: Request, res: Response): void {
         const { id, nome, email, senha } = req.body;
 
         const usuario = new Usuario(
@@ -26,14 +38,27 @@ export class UsuarioController {
         res.status(201).json(usuario);
     }
 
-    remover(req: Request, res: Response): void {
+    editar(req: Request, res: Response): void {
+        const id = Number(req.params.id);
+        const { nome, email, senha } = req.body;
 
+        const usuario = new Usuario(
+            id,
+            nome,
+            email,
+            senha
+        );
+
+        repository.editar(id, usuario);
+
+        res.json(usuario);
+    }
+
+    remover(req: Request, res: Response): void {
         const id = Number(req.params.id);
 
         repository.remover(id);
 
         res.sendStatus(204);
-
     }
-
 }

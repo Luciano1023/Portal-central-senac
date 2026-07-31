@@ -1,5 +1,8 @@
 import { Usuario } from "../Models/Usuario";
 export class UsuarioRepository {
+    buscar(id: number) {
+        throw new Error("Method not implemented.");
+    }
 
     private usuarios: Usuario[] = [];
 
