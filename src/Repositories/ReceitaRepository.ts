@@ -1,4 +1,4 @@
-import { Noticia } from "../models/Noticia";
+import { Noticia } from "../Models/Noticia";
 
 export class NoticiaRepository {
 
