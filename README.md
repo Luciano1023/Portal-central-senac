@@ -7,7 +7,7 @@ Sistema web e blog de portal de notícias desenvolvido como projeto final da mat
  - Vitor Filgueira - QA / Testes
  - José Luciano - Back-end
  - Gabriel Costa - Líder
- - Matheus Vinícius - Front-end
+ - Mateus Vinícius - Front-end
 
 ## Tecnologias
 
