@@ -1,6 +1,7 @@
 {
   "name": "portal-central-senac",
   "version": "1.0.0",
+<<<<<<< HEAD
   "description": "Projeto Portal Central Senac",
   "main": "dist/server.js",
   "scripts": {
@@ -33,3 +34,34 @@
     "typescript": "^5.9.2"
   }
 }
+=======
+  "description": "Sistema web e blog de portal de notícias desenvolvido como projeto final da matéria de TI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luciano1023/Portal-central-senac.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Luciano1023/Portal-central-senac/issues"
+  },
+  "homepage": "https://github.com/Luciano1023/Portal-central-senac#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.1.2",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.12",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
+>>>>>>> 6b693f03bc99d15eaed2e5f17435a906af90e0a9
