@@ -10,6 +10,19 @@ export class NoticiaController {
         res.json(repository.listar());
     }
 
+    buscar(req: Request, res: Response): void {
+
+        const id = Number(req.params.id);
+        const noticia = repository.buscarPorId(id);
+
+        if (!noticia) {
+            res.status(404).json({ mensagem: "Notícia não encontrada." });
+            return;
+        }
+
+        res.json(noticia);
+    }
+
     cadastrar(req: Request, res: Response): void {
 
         const noticia = Noticia.fromJSON(req.body);
@@ -17,7 +30,35 @@ export class NoticiaController {
         repository.adicionar(noticia);
 
         res.status(201).json(noticia);
+    }
 
+    editar(req: Request, res: Response): void {
+
+        const id = Number(req.params.id);
+        const noticia = Noticia.fromJSON(req.body);
+
+        const sucesso = repository.editar(id, noticia);
+
+        if (!sucesso) {
+            res.status(404).json({ mensagem: "Notícia não encontrada." });
+            return;
+        }
+
+        res.json(noticia);
+    }
+
+    remover(req: Request, res: Response): void {
+
+        const id = Number(req.params.id);
+
+        const sucesso = repository.remover(id);
+
+        if (!sucesso) {
+            res.status(404).json({ mensagem: "Notícia não encontrada." });
+            return;
+        }
+
+        res.status(204).send();
     }
 
 }
