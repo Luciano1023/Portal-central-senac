@@ -4,6 +4,7 @@ Sistema web de gerenciamento de notícias desenvolvido como projeto final da dis
 
 O projeto foi desenvolvido utilizando **Node.js**, **Express**, **TypeScript** e arquitetura **MVC**, permitindo o gerenciamento de usuários, categorias e notícias, além de possuir autenticação e testes automatizados.
 
+
 # Equipe
 
 | Integrante | Função |
@@ -13,6 +14,7 @@ O projeto foi desenvolvido utilizando **Node.js**, **Express**, **TypeScript** e
 | Mateus Vinícius | Front-end |
 | Vitor Filgueira | QA / Testes |
 
+
 # Tecnologias Utilizadas
 
 - Node.js
@@ -21,6 +23,7 @@ O projeto foi desenvolvido utilizando **Node.js**, **Express**, **TypeScript** e
 - EJS
 - Jest
 - ts-jest
+
 
 # Estrutura do Projeto
 
@@ -48,6 +51,7 @@ Portal-central-senac
 └── README.md
 ```
 
+
 # Funcionalidades
 
 O sistema possui funcionalidades para gerenciamento de um portal de notícias, incluindo:
@@ -63,6 +67,7 @@ O sistema possui funcionalidades para gerenciamento de um portal de notícias, i
 - Organização em arquitetura MVC
 - Persistência de dados em arquivos JSON
 - Testes automatizados
+
 
 # Testes Automatizados
 
@@ -82,6 +87,7 @@ Todos os testes encontram-se na pasta:
 ```
 src/__tests__
 ```
+
 
 # Organização do Projeto
 
@@ -122,6 +128,7 @@ Interfaces da aplicação utilizando **EJS**.
 - Categorias
 - Notícias
 
+
 # Como executar o projeto
 
 Clone o repositório:
@@ -154,6 +161,7 @@ npm run dev
 npm test
 ```
 
+
 # Dependências
 
 ### Produção
@@ -169,6 +177,7 @@ npm test
 - @types/express
 - @types/jest
 
+
 # Melhorias Futuras
 
 - Banco de dados relacional
@@ -180,13 +189,14 @@ npm test
 - Dashboard administrativo
 - Cobertura de testes ampliada
 
+
 # Licença
 
 Projeto desenvolvido para fins acadêmicos como atividade da disciplina de Tecnologia da Informação (TI).
 
-# ⭐ Agradecimentos
+# Agradecimentos
 
-Projeto desenvolvido em equipe durante o curso, aplicando conceitos de:
+Projeto desenvolvido em equipe durante o curso ministrado por Alex Almeida, aplicando conceitos de:
 
 - Programação Orientada a Objetos
 - Arquitetura MVC
