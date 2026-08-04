@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 
 import { authRoutes } from "./routes/AuthRoutes";
-import { categoriaRoutes } from "./routes/categoriaRoutes";
+import categoriaRoutes from "./routes/categoriaRoutes";
 import { receitaRoutes } from "./routes/receitaRoutes";
 import { usuarioRoutes } from "./routes/UsuarioRoutes";
 
