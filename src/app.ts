@@ -31,7 +31,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use("/auth", authRoutes);
 app.use("/categorias", categoriaRoutes);
-app.use("/receitas", receitaRoutes);
+app.use("/noticias", receitaRoutes);
 app.use("/usuarios", usuarioRoutes);
 
 // =========================
