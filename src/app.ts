@@ -3,7 +3,7 @@ import path from "path";
 
 import { authRoutes } from "./routes/AuthRoutes";
 import categoriaRoutes from "./routes/categoriaRoutes";
-import { receitaRoutes } from "./routes/receitaRoutes";
+import NoticiaRoutes from "./routes/NoticiaRoutes";
 import { usuarioRoutes } from "./routes/UsuarioRoutes";
 
 const app = express();
@@ -15,8 +15,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Arquivos estáticos (CSS, imagens, etc.)
-app.use(express.static(path.join(__dirname, "Public", "html")));
+// Arquivos estáticos (CSS, imagens, JS)
+app.use(express.static(path.join(__dirname, "Public")));
 
 // =========================
 // Configuração do EJS
@@ -31,15 +31,15 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use("/auth", authRoutes);
 app.use("/categorias", categoriaRoutes);
-app.use("/receitas", receitaRoutes);
+app.use("/noticias", NoticiaRoutes);
 app.use("/usuarios", usuarioRoutes);
 
 // =========================
-// Rota inicial
+// Página inicial
 // =========================
 
 app.get("/", (req, res) => {
-    res.send("API funcionando!");
+    res.redirect("/noticias");
 });
 
 export default app;

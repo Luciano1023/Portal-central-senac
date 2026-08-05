@@ -2,7 +2,16 @@ import { Categoria } from "../Models/Categoria";
 
 export class CategoriaRepository {
 
-    private categorias: Categoria[] = [];
+    private categorias: Categoria[] = [
+
+        new Categoria(1, "Política"),
+        new Categoria(2, "Esportes"),
+        new Categoria(3, "Tecnologia"),
+        new Categoria(4, "Economia"),
+        new Categoria(5, "Entretenimento"),
+        new Categoria(6, "Saúde")
+
+    ];
 
     listar(): Categoria[] {
         return this.categorias;
@@ -18,7 +27,9 @@ export class CategoriaRepository {
 
     editar(id: number, categoriaAtualizada: Categoria): boolean {
 
-        const indice = this.categorias.findIndex(categoria => categoria.getId() === id);
+        const indice = this.categorias.findIndex(
+            categoria => categoria.getId() === id
+        );
 
         if (indice === -1) {
             return false;
@@ -31,7 +42,9 @@ export class CategoriaRepository {
 
     remover(id: number): boolean {
 
-        const indice = this.categorias.findIndex(categoria => categoria.getId() === id);
+        const indice = this.categorias.findIndex(
+            categoria => categoria.getId() === id
+        );
 
         if (indice === -1) {
             return false;

@@ -7,7 +7,13 @@ const repository = new CategoriaRepository();
 export class CategoriaController {
 
     listar(req: Request, res: Response): void {
-        res.json(repository.listar());
+
+        const categorias = repository.listar();
+
+        res.render("categoria", {
+            categorias
+        });
+
     }
 
     buscar(req: Request, res: Response): void {
@@ -17,7 +23,7 @@ export class CategoriaController {
         const categoria = repository.buscarPorId(id);
 
         if (!categoria) {
-            res.status(404).json({ mensagem: "Categoria não encontrada." });
+            res.status(404).send("Categoria não encontrada.");
             return;
         }
 
@@ -31,7 +37,7 @@ export class CategoriaController {
 
         repository.adicionar(categoria);
 
-        res.status(201).json(categoria);
+        res.redirect("/categorias");
 
     }
 
@@ -44,9 +50,14 @@ export class CategoriaController {
             ...req.body
         });
 
-        repository.editar(id, categoria);
+        const atualizado = repository.editar(id, categoria);
 
-        res.json(categoria);
+        if (!atualizado) {
+            res.status(404).send("Categoria não encontrada.");
+            return;
+        }
+
+        res.redirect("/categorias");
 
     }
 
@@ -54,9 +65,14 @@ export class CategoriaController {
 
         const id = Number(req.params.id);
 
-        repository.remover(id);
+        const removido = repository.remover(id);
 
-        res.sendStatus(204);
+        if (!removido) {
+            res.status(404).send("Categoria não encontrada.");
+            return;
+        }
+
+        res.redirect("/categorias");
 
     }
 

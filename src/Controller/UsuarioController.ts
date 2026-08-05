@@ -7,58 +7,82 @@ const repository = new UsuarioRepository();
 export class UsuarioController {
 
     listar(req: Request, res: Response): void {
-        res.json(repository.listar());
+
+        const usuarios = repository.listar();
+
+        res.render("usuarios", {
+            usuarios
+        });
+
     }
 
     buscar(req: Request, res: Response): void {
+
         const id = Number(req.params.id);
 
         const usuario = repository.buscar(id);
 
-        if (usuario === null) {
-            res.status(404).json({ mensagem: "Usuário não encontrado." });
+        if (!usuario) {
+            res.status(404).send("Usuário não encontrado.");
             return;
         }
 
-        res.json(usuario);
+        res.render("usuarioDetalhe", {
+            usuario
+        });
+
     }
 
     cadastrar(req: Request, res: Response): void {
-        const { id, nome, email, senha } = req.body;
 
         const usuario = new Usuario(
-            id,
-            nome,
-            email,
-            senha
+            req.body.id,
+            req.body.nome,
+            req.body.email,
+            req.body.senha
         );
 
         repository.adicionar(usuario);
 
-        res.status(201).json(usuario);
+        res.redirect("/usuarios");
+
     }
 
     editar(req: Request, res: Response): void {
+
         const id = Number(req.params.id);
-        const { nome, email, senha } = req.body;
 
         const usuario = new Usuario(
             id,
-            nome,
-            email,
-            senha
+            req.body.nome,
+            req.body.email,
+            req.body.senha
         );
 
-        repository.editar(id, usuario);
+        const atualizado = repository.editar(id, usuario);
 
-        res.json(usuario);
+        if (!atualizado) {
+            res.status(404).send("Usuário não encontrado.");
+            return;
+        }
+
+        res.redirect("/usuarios");
+
     }
 
     remover(req: Request, res: Response): void {
+
         const id = Number(req.params.id);
 
-        repository.remover(id);
+        const removido = repository.remover(id);
 
-        res.sendStatus(204);
+        if (!removido) {
+            res.status(404).send("Usuário não encontrado.");
+            return;
+        }
+
+        res.redirect("/usuarios");
+
     }
+
 }

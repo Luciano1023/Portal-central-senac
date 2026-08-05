@@ -1,13 +1,13 @@
 import { Router } from "express";
+import { CategoriaController } from "../Controller/CategoriaController";
 
-const router = Router();
+const categoriaRoutes = Router();
+const controller = new CategoriaController();
 
-router.get("/", (req, res) => {
-  res.send("GET request to the homepage");
-});
+categoriaRoutes.get("/", (req, res) => controller.listar(req, res));
+categoriaRoutes.get("/:id", (req, res) => controller.buscar(req, res));
+categoriaRoutes.post("/", (req, res) => controller.cadastrar(req, res));
+categoriaRoutes.put("/:id", (req, res) => controller.editar(req, res));
+categoriaRoutes.delete("/:id", (req, res) => controller.remover(req, res));
 
-router.post("/", (req, res) => {
-  res.send("POST request to the homepage");
-});
-
-export default router;
+export default categoriaRoutes;
