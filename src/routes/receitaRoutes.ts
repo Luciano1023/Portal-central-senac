@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { NoticiaController } from "../Controller/ReceitaController";
+
 const receitaRoutes = Router();
 const controller = new NoticiaController();
 
