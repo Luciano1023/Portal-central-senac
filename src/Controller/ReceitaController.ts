@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { NoticiaRepository } from "../Repositories/ReceitaRepository";
+import { NoticiaRepository } from "../Repositories/NoticiaRepository";
 import { Noticia } from "../Models/Noticia";
 
 const repository = new NoticiaRepository();
