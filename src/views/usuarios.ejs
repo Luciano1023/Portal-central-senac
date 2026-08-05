@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - Central Senac</title>
+</head>
+
+<body>
+
+    <h1>Usuários</h1>
+
+    <h2>Cadastrar usuário</h2>
+
+    <form action="/usuarios" method="POST">
+
+        <label>Nome</label><br>
+        <input type="text" name="nome" required><br><br>
+
+        <label>E-mail</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Senha</label><br>
+        <input type="password" name="senha" required><br><br>
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <hr>
+
+    <h2>Usuários cadastrados</h2>
+
+    <% if (usuarios && usuarios.length > 0) { %>
+
+        <ul>
+
+        <% usuarios.forEach(usuario => { %>
+
+            <li>
+                <strong><%= usuario.nome %></strong><br>
+                <%= usuario.email %>
+            </li>
+
+        <% }) %>
+
+        </ul>
+
+    <% } else { %>
+
+        <p>Nenhum usuário cadastrado.</p>
+
+    <% } %>
+
+</body>
+
+</html>

@@ -1,9 +1,16 @@
 import express from "express";
 import path from "path";
 
+<<<<<<< HEAD
 import { authRoutes } from "./routes/AuthRoutes";
 import categoriaRoutes from "./routes/categoriaRoutes";import { receitaRoutes } from "./routes/receitaRoutes";
 import { usuarioRoutes } from "./routes/UsuarioRoutes";
+=======
+import { authRoutes } from "./routes/authRoutes";
+import categoriaRoutes from "./routes/categoriaRoutes";
+import NoticiaRoutes from "./routes/NoticiaRoutes";
+import UsuarioRoutes from "./routes/UsuarioRoutes";
+>>>>>>> 1674696bdd59020d8544cc73066014cd91ccd7d4
 
 const app = express();
 
@@ -30,8 +37,8 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use("/auth", authRoutes);
 app.use("/categorias", categoriaRoutes);
-app.use("/receitas", receitaRoutes);
-app.use("/usuarios", usuarioRoutes);
+app.use("/receitas", NoticiaRoutes);
+app.use("/usuarios", UsuarioRoutes);
 
 // =========================
 // Rota inicial

@@ -1,5 +1,5 @@
 import { Noticia } from "../Models/Noticia";
-import { NoticiaRepository } from "../Repositories/ReceitaRepository";
+import { NoticiaRepository } from "../Repositories/NoticiaRepository";
 
 describe("NoticiaRepository", () => {
 
