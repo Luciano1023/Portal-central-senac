@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { UsuarioController } from "../Controller/UsuarioController";
 
-const router = Router();
+const usuarioRoutes = Router();
 const controller = new UsuarioController();
 
-router.get("/", controller.listar);
-router.get("/:id", controller.buscar);
-router.post("/", controller.cadastrar);
-router.put("/:id", controller.editar);
-router.delete("/:id", controller.remover);
+usuarioRoutes.get("/", (req, res) => controller.listar(req, res));
+usuarioRoutes.get("/:id", (req, res) => controller.buscar(req, res));
+usuarioRoutes.post("/", (req, res) => controller.cadastrar(req, res));
+usuarioRoutes.put("/:id", (req, res) => controller.editar(req, res));
+usuarioRoutes.delete("/:id", (req, res) => controller.remover(req, res));
 
-export default router;
+export { usuarioRoutes };

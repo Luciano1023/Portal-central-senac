@@ -1,9 +1,12 @@
 {
   "name": "portal-central-senac",
   "version": "1.0.0",
-  "description": "Sistema web e blog de portal de notícias desenvolvido como projeto final da matéria de TI.",
-  "main": "index.js",
+  "description": "Sistema web de gerenciamento de notícias desenvolvido para o projeto Central Senac.",
+  "main": "dist/server.js",
   "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
@@ -13,10 +16,18 @@
     "type": "git",
     "url": "git+https://github.com/Luciano1023/Portal-central-senac.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "express",
+    "mvc",
+    "ejs",
+    "jest",
+    "portal",
+    "noticias"
+  ],
+  "author": "Equipe Central Senac",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Luciano1023/Portal-central-senac/issues"
   },
