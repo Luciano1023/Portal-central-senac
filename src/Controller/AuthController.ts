@@ -74,11 +74,16 @@ export class AuthController {
 
     res.redirect("/noticias");
 }
-    logout(req: Request, res: Response): void {
+   logout(req: Request, res: Response): void {
 
-        res.json({
-            mensagem: "Logout realizado."
-        });
+    req.session.destroy((erro) => {
 
-    }
+        if (erro) {
+            res.status(500).send("Não foi possível realizar o logout.");
+            return;
+        }
+
+        res.redirect("/auth/login");
+    });
+
 }
