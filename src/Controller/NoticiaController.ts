@@ -41,7 +41,10 @@ export class NoticiaController {
                 break;
 
             default:
-                res.status(404).send("Notícia não encontrada.");
+                res.render("noticiadetalhe", {
+                    noticia
+                });
+                break;
         }
     }
 
