@@ -70,9 +70,10 @@ export class AuthController {
         return;
     }
 
-    res.send(`Login realizado. Bem-vindo, ${usuario.getNome()}!`);
-}
+    req.session.usuarioId = usuario.getId();
 
+    res.redirect("/noticias");
+}
     logout(req: Request, res: Response): void {
 
         res.json({
