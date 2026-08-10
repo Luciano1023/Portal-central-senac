@@ -1,15 +1,16 @@
 import { Router } from "express";
+import { AuthController } from "../Controller/AuthController";
 
 export const authRoutes = Router();
+
+const controller = new AuthController();
 
 authRoutes.get("/login", (req, res) => {
     res.render("login");
 });
 
 authRoutes.post("/login", (req, res) => {
-    const { email, senha } = req.body;
-
-    res.send("Login realizado.");
+    controller.login(req, res);
 });
 
 authRoutes.get("/cadastro", (req, res) => {
@@ -17,7 +18,9 @@ authRoutes.get("/cadastro", (req, res) => {
 });
 
 authRoutes.post("/cadastro", (req, res) => {
-    const { nome, email, senha } = req.body;
+    controller.cadastrar(req, res);
+});
 
-        res.send("Usuário cadastrado.");
-    });
+authRoutes.post("/logout", (req, res) => {
+    controller.logout(req, res);
+});
