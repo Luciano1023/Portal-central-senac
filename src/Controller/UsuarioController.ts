@@ -11,7 +11,6 @@ export class UsuarioController {
         res.render("usuarios", {
             usuarios
         });
-
     }
 
     buscar(req: Request, res: Response): void {
@@ -25,26 +24,24 @@ export class UsuarioController {
             return;
         }
 
-        res.render("usuarioDetalhe", {
-            usuario
+        res.render("usuarios", {
+            usuarios: [usuario]
         });
-
     }
 
-   cadastrar(req: Request, res: Response): void {
+    cadastrar(req: Request, res: Response): void {
 
-    const usuario = new Usuario(
-        0,
-        req.body.nome,
-        req.body.email,
-        req.body.senha
-    );
+        const usuario = new Usuario(
+            0,
+            req.body.nome,
+            req.body.email,
+            req.body.senha
+        );
 
-    repository.adicionar(usuario);
+        repository.adicionar(usuario);
 
-    res.redirect("/usuarios");
-
-}
+        res.redirect("/usuarios");
+    }
 
     editar(req: Request, res: Response): void {
 
@@ -65,7 +62,6 @@ export class UsuarioController {
         }
 
         res.redirect("/usuarios");
-
     }
 
     remover(req: Request, res: Response): void {
@@ -80,6 +76,5 @@ export class UsuarioController {
         }
 
         res.redirect("/usuarios");
-
     }
 }
