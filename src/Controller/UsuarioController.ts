@@ -31,20 +31,20 @@ export class UsuarioController {
 
     }
 
-    cadastrar(req: Request, res: Response): void {
+   cadastrar(req: Request, res: Response): void {
 
-        const usuario = new Usuario(
-            req.body.id,
-            req.body.nome,
-            req.body.email,
-            req.body.senha
-        );
+    const usuario = new Usuario(
+        0,
+        req.body.nome,
+        req.body.email,
+        req.body.senha
+    );
 
-        repository.adicionar(usuario);
+    repository.adicionar(usuario);
 
-        res.redirect("/usuarios");
+    res.redirect("/usuarios");
 
-    }
+}
 
     editar(req: Request, res: Response): void {
 
