@@ -1,6 +1,8 @@
 import express from "express";
 import path from "path";
 
+import { sessionConfig } from "./config/session";
+
 import { authRoutes } from "./routes/AuthRoutes";
 import categoriaRoutes from "./routes/categoriaRoutes";
 import NoticiaRoutes from "./routes/NoticiaRoutes";
