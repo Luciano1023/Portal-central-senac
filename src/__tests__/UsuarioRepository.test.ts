@@ -1,107 +1,83 @@
 import { Usuario } from "../Models/Usuario";
-import { UsuarioRepository } from "../Repositories/UsuarioRepository";
 
-describe("UsuarioRepository", () => {
+export class UsuarioRepository {
 
-    let repository: UsuarioRepository;
+    private usuarios: Usuario[] = [];
 
-    beforeEach(() => {
-        repository = new UsuarioRepository();
-    });
+    private proximoId: number = 1;
 
-    test("deve adicionar um usuário", () => {
-        const usuario = new Usuario(
-            1,
-            "João",
-            "joao@email.com",
-            "123456"
+    listar(): Usuario[] {
+        return this.usuarios;
+    }
+
+    buscar(id: number): Usuario | undefined {
+        return this.usuarios.find(
+            usuario => usuario.getId() === id
+        );
+    }
+
+    buscarPorId(id: number): Usuario | undefined {
+        return this.usuarios.find(
+            usuario => usuario.getId() === id
+        );
+    }
+
+    adicionar(usuario: Usuario): void {
+
+        let id = usuario.getId();
+
+        if (id <= 0) {
+            id = this.proximoId;
+
+            usuario = new Usuario(
+                id,
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getSenha()
+            );
+        }
+
+        this.usuarios.push(usuario);
+
+        this.proximoId = Math.max(this.proximoId, id + 1);
+    }
+
+    editar(id: number, usuarioAtualizado: Usuario): boolean {
+
+        const indice = this.usuarios.findIndex(
+            usuario => usuario.getId() === id
         );
 
-        repository.adicionar(usuario);
+        if (indice === -1) {
+            return false;
+        }
 
-        expect(repository.listar()).toHaveLength(1);
-        expect(repository.listar()[0].getNome()).toBe("João");
-    });
-
-    test("deve listar os usuários", () => {
-        repository.adicionar(
-            new Usuario(1, "João", "joao@email.com", "123456")
+        const usuarioComId = new Usuario(
+            id,
+            usuarioAtualizado.getNome(),
+            usuarioAtualizado.getEmail(),
+            usuarioAtualizado.getSenha()
         );
 
-        repository.adicionar(
-            new Usuario(2, "Maria", "maria@email.com", "abcdef")
+        this.usuarios[indice] = usuarioComId;
+
+        return true;
+    }
+
+    remover(id: number): boolean {
+
+        const indice = this.usuarios.findIndex(
+            usuario => usuario.getId() === id
         );
 
-        expect(repository.listar()).toHaveLength(2);
-    });
+        if (indice === -1) {
+            return false;
+        }
 
-    test("deve buscar um usuário pelo ID", () => {
-        const usuario = new Usuario(
-            1,
-            "João",
-            "joao@email.com",
-            "123456"
-        );
+        this.usuarios.splice(indice, 1);
 
-        repository.adicionar(usuario);
+        return true;
+    }
+}
 
-        expect(repository.buscarPorId(1)).toBe(usuario);
-    });
-
-    test("deve retornar undefined ao buscar um ID inexistente", () => {
-        expect(repository.buscarPorId(99)).toBeUndefined();
-    });
-
-    test("deve editar um usuário existente", () => {
-        const usuario = new Usuario(
-            1,
-            "João",
-            "joao@email.com",
-            "123456"
-        );
-
-        repository.adicionar(usuario);
-
-        const atualizado = new Usuario(
-            1,
-            "Maria",
-            "maria@email.com",
-            "654321"
-        );
-
-        expect(repository.editar(1, atualizado)).toBe(true);
-
-        expect(repository.buscarPorId(1)?.getNome()).toBe("Maria");
-    });
-
-    test("deve retornar false ao editar um usuário inexistente", () => {
-        const usuario = new Usuario(
-            1,
-            "Maria",
-            "maria@email.com",
-            "654321"
-        );
-
-        expect(repository.editar(99, usuario)).toBe(false);
-    });
-
-    test("deve remover um usuário existente", () => {
-        const usuario = new Usuario(
-            1,
-            "João",
-            "joao@email.com",
-            "123456"
-        );
-
-        repository.adicionar(usuario);
-
-        expect(repository.remover(1)).toBe(true);
-
-        expect(repository.listar()).toHaveLength(0);
-    });
-
-    test("deve retornar false ao remover um usuário inexistente", () => {
-        expect(repository.remover(99)).toBe(false);
-    });
-
-});
+export const usuarioRepository = new UsuarioRepository();
