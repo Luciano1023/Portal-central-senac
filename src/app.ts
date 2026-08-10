@@ -9,6 +9,13 @@ import { usuarioRoutes } from "./routes/UsuarioRoutes";
 const app = express();
 
 // =========================
+// Caminho dos arquivos do projeto
+// =========================
+
+const publicPath = path.join(__dirname, "..", "src", "Public");
+const viewsPath = path.join(__dirname, "..", "src", "views");
+
+// =========================
 // Middlewares
 // =========================
 
@@ -16,14 +23,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Arquivos estáticos (CSS, imagens, JS)
-app.use(express.static(path.join(__dirname, "Public")));
+app.use(express.static(publicPath));
 
 // =========================
 // Configuração do EJS
 // =========================
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", viewsPath);
 
 // =========================
 // Rotas
