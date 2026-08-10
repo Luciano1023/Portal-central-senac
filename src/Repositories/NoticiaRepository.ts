@@ -6,27 +6,27 @@ export class NoticiaRepository {
 
         new Noticia(
             1,
-            "Alunos do MédioTec reclamam de não poderem utilizar portão entre SENAC e SESC",
-            "Estudantes afirmam que o trajeto entre as duas instituições é longo e cansativo. Eles reivindicam a liberação do portão que liga diretamente o SENAC ao SESC para facilitar o deslocamento durante o contraturno.",
-            "https://picsum.photos/800/400?random=1",
+            "Alunos do MédioTec reclamam de não poderem utilizar portão entre SENAC e SESC durante contraturnos",
+            "Alunos do MédioTec reclamam das condições de deslocamento entre o SENAC e o SESC durante os contraturnos e reivindicam a liberação do portão que liga diretamente as duas instituições.",
+            "/img/portaotrancado.webp",
             1,
             1
         ),
 
         new Noticia(
             2,
-            "Portal Central Senac inicia desenvolvimento",
-            "O Portal Central Senac está sendo desenvolvido utilizando Node.js, Express, TypeScript e EJS. O objetivo é permitir a publicação de notícias e facilitar o acesso às informações pelos alunos.",
-            "https://picsum.photos/800/400?random=2",
+            "Após cerca de três meses sem psicóloga, SENAC recebe nova profissional para atendimento aos alunos",
+            "Após aproximadamente três meses sem uma psicóloga disponível de forma regular, o SENAC recebe Thainná Sandy, nova profissional que chega para retomar o atendimento psicológico aos alunos.",
+            "/img/psicologa.png",
             1,
             1
         ),
 
         new Noticia(
             3,
-            "Novos projetos movimentam as turmas do MédioTec",
-            "As turmas do MédioTec continuam desenvolvendo projetos práticos utilizando HTML, CSS, JavaScript, Node.js e bancos de dados durante as aulas de programação.",
-            "https://picsum.photos/800/400?random=3",
+            "Prova de Química é realizada no Laboratório de TI após descoberta de fraude em avaliações digitais",
+            "Após a descoberta de uma possível vulnerabilidade nas avaliações digitais, a prova de Química passou a ser realizada no Laboratório de TI, com computadores que possuem mecanismos de segurança mais rigorosos.",
+            "/img/laboratorio.jpeg",
             2,
             1
         )
@@ -38,7 +38,9 @@ export class NoticiaRepository {
     }
 
     buscarPorId(id: number): Noticia | undefined {
-        return this.noticias.find(noticia => noticia.getId() === id);
+        return this.noticias.find(
+            noticia => noticia.getId() === id
+        );
     }
 
     adicionar(noticia: Noticia): void {
@@ -74,5 +76,4 @@ export class NoticiaRepository {
 
         return true;
     }
-
 }
