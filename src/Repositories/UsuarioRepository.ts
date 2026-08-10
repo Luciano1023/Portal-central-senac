@@ -73,3 +73,5 @@ export class UsuarioRepository {
         return true;
     }
 }
+
+export const usuarioRepository = new UsuarioRepository();
