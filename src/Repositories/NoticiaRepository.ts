@@ -8,7 +8,7 @@ export class NoticiaRepository {
             1,
             "Alunos do MédioTec reclamam de não poderem utilizar portão entre SENAC e SESC durante contraturnos",
             "Alunos do MédioTec reclamam das condições de deslocamento entre o SENAC e o SESC durante os contraturnos e reivindicam a liberação do portão que liga diretamente as duas instituições.",
-            "/img/portaotrancado.webp",
+            "/html/img/portaotrancado.webp",
             1,
             1
         ),
@@ -17,7 +17,7 @@ export class NoticiaRepository {
             2,
             "Após cerca de três meses sem psicóloga, SENAC recebe nova profissional para atendimento aos alunos",
             "Após aproximadamente três meses sem uma psicóloga disponível de forma regular, o SENAC recebe Thainná Sandy, nova profissional que chega para retomar o atendimento psicológico aos alunos.",
-            "/img/psicologa.png",
+            "/html/img/psicologa.png",
             1,
             1
         ),
@@ -26,7 +26,7 @@ export class NoticiaRepository {
             3,
             "Prova de Química é realizada no Laboratório de TI após descoberta de fraude em avaliações digitais",
             "Após a descoberta de uma possível vulnerabilidade nas avaliações digitais, a prova de Química passou a ser realizada no Laboratório de TI, com computadores que possuem mecanismos de segurança mais rigorosos.",
-            "/img/laboratorio.jpeg",
+            "/html/img/laboratorio.jpeg",
             2,
             1
         )
