@@ -7,6 +7,7 @@ const repository = new NoticiaRepository();
 export class NoticiaController {
 
     listar(req: Request, res: Response): void {
+
         const noticias = repository.listar();
 
         res.render("noticia", {
@@ -26,16 +27,17 @@ export class NoticiaController {
         }
 
         switch (id) {
+
             case 1:
-                res.render("receitas2");
+                res.render("noticia1", { noticia });
                 break;
 
             case 2:
-                res.render("receitas");
+                res.render("noticia2", { noticia });
                 break;
 
             case 3:
-                res.render("receitas3");
+                res.render("noticia3", { noticia });
                 break;
 
             default:
@@ -64,7 +66,9 @@ export class NoticiaController {
         const atualizado = repository.editar(id, noticia);
 
         if (!atualizado) {
-            res.status(404).json({ mensagem: "Notícia não encontrada." });
+            res.status(404).json({
+                mensagem: "Notícia não encontrada."
+            });
             return;
         }
 
@@ -78,7 +82,9 @@ export class NoticiaController {
         const removido = repository.remover(id);
 
         if (!removido) {
-            res.status(404).json({ mensagem: "Notícia não encontrada." });
+            res.status(404).json({
+                mensagem: "Notícia não encontrada."
+            });
             return;
         }
 
