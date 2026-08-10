@@ -1,8 +1,8 @@
 import { Usuario } from "../Models/Usuario";
 export class UsuarioRepository {
-    buscar(id: number) {
-        throw new Error("Method not implemented.");
-    }
+  buscar(id: number): Usuario | undefined {
+    return this.usuarios.find(usuario => usuario.getId() === id);
+}
 
     private usuarios: Usuario[] = [];
 
