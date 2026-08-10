@@ -8,7 +8,7 @@ export class NoticiaController {
 
     listar(req: Request, res: Response): void {
         const noticias = repository.listar();
-    
+
         res.render("noticia", {
             noticias
         });
@@ -17,17 +17,30 @@ export class NoticiaController {
     buscar(req: Request, res: Response): void {
 
         const id = Number(req.params.id);
-    
+
         const noticia = repository.buscarPorId(id);
-    
+
         if (!noticia) {
             res.status(404).send("Notícia não encontrada.");
             return;
         }
-    
-        res.render("noticiaDetalhe", {
-            noticia
-        });
+
+        switch (id) {
+            case 1:
+                res.render("receitas2");
+                break;
+
+            case 2:
+                res.render("receitas");
+                break;
+
+            case 3:
+                res.render("receitas3");
+                break;
+
+            default:
+                res.status(404).send("Notícia não encontrada.");
+        }
     }
 
     cadastrar(req: Request, res: Response): void {
