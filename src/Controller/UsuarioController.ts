@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
-import { UsuarioRepository } from "../Repositories/UsuarioRepository";
+import { usuarioRepository as repository } from "../Repositories/UsuarioRepository";
 import { Usuario } from "../Models/Usuario";
-
-const repository = new UsuarioRepository();
 
 export class UsuarioController {
 
@@ -84,5 +82,4 @@ export class UsuarioController {
         res.redirect("/usuarios");
 
     }
-
 }
