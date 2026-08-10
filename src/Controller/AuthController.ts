@@ -9,7 +9,7 @@ export class AuthController {
 
         const { nome, email, senha, confirmarSenha } = req.body;
 
-        if (!nome || !email || !senha) {
+        if (!nome || !email || !senha || !confirmarSenha) {
             res.status(400).send("Todos os campos são obrigatórios.");
             return;
         }
@@ -44,46 +44,50 @@ export class AuthController {
 
     async login(req: Request, res: Response): Promise<void> {
 
-    const { email, senha } = req.body;
+        const { email, senha } = req.body;
 
-    if (!email || !senha) {
-        res.status(400).send("E-mail e senha são obrigatórios.");
-        return;
-    }
-
-    const usuario = repository.listar().find(
-        usuario => usuario.getEmail() === email
-    );
-
-    if (!usuario) {
-        res.status(401).send("E-mail ou senha incorretos.");
-        return;
-    }
-
-    const senhaValida = await bcrypt.compare(
-        senha,
-        usuario.getSenha()
-    );
-
-    if (!senhaValida) {
-        res.status(401).send("E-mail ou senha incorretos.");
-        return;
-    }
-
-    req.session.usuarioId = usuario.getId();
-
-    res.redirect("/noticias");
-}
-   logout(req: Request, res: Response): void {
-
-    req.session.destroy((erro) => {
-
-        if (erro) {
-            res.status(500).send("Não foi possível realizar o logout.");
+        if (!email || !senha) {
+            res.status(400).send("E-mail e senha são obrigatórios.");
             return;
         }
 
-        res.redirect("/auth/login");
-    });
+        const usuario = repository.listar().find(
+            usuario => usuario.getEmail() === email
+        );
 
+        if (!usuario) {
+            res.status(401).send("E-mail ou senha incorretos.");
+            return;
+        }
+
+        const senhaValida = await bcrypt.compare(
+            senha,
+            usuario.getSenha()
+        );
+
+        if (!senhaValida) {
+            res.status(401).send("E-mail ou senha incorretos.");
+            return;
+        }
+
+        req.session.usuarioId = usuario.getId();
+
+        res.redirect("/noticias");
+    }
+
+    logout(req: Request, res: Response): void {
+
+        req.session.destroy((erro) => {
+
+            if (erro) {
+                res.status(500).send(
+                    "Não foi possível realizar o logout."
+                );
+                return;
+            }
+
+            res.redirect("/auth/login");
+        });
+
+    }
 }
