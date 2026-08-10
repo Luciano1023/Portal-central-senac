@@ -44,8 +44,34 @@ export class AuthController {
 
     async login(req: Request, res: Response): Promise<void> {
 
-        res.status(501).send("Login ainda será implementado.");
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+        res.status(400).send("E-mail e senha são obrigatórios.");
+        return;
     }
+
+    const usuario = repository.listar().find(
+        usuario => usuario.getEmail() === email
+    );
+
+    if (!usuario) {
+        res.status(401).send("E-mail ou senha incorretos.");
+        return;
+    }
+
+    const senhaValida = await bcrypt.compare(
+        senha,
+        usuario.getSenha()
+    );
+
+    if (!senhaValida) {
+        res.status(401).send("E-mail ou senha incorretos.");
+        return;
+    }
+
+    res.send(`Login realizado. Bem-vindo, ${usuario.getNome()}!`);
+}
 
     logout(req: Request, res: Response): void {
 
