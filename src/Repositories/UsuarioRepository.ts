@@ -24,16 +24,22 @@ export class UsuarioRepository {
 
     adicionar(usuario: Usuario): void {
 
-        const usuarioComId = new Usuario(
-            this.proximoId,
-            usuario.getNome(),
-            usuario.getEmail(),
-            usuario.getSenha()
-        );
+        let id = usuario.getId();
 
-        this.usuarios.push(usuarioComId);
+        if (id <= 0) {
+            id = this.proximoId;
 
-        this.proximoId++;
+            usuario = new Usuario(
+                id,
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getSenha()
+            );
+        }
+
+        this.usuarios.push(usuario);
+
+        this.proximoId = Math.max(this.proximoId, id + 1);
     }
 
     editar(id: number, usuarioAtualizado: Usuario): boolean {
