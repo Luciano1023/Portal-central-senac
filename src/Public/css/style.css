@@ -773,3 +773,199 @@ button,
         overflow-x: auto;
     }
 }
+
+/* =========================================================
+   LOGIN / AUTENTICAÇÃO
+   ========================================================= */
+
+.auth-page {
+    min-height: 65vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 0;
+}
+
+.auth-card {
+    width: min(450px, 100%);
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+
+    padding: 40px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-label {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: #c8102e;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.auth-header h1 {
+    color: #111827;
+
+    font-size: 30px;
+    line-height: 1.2;
+
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    color: #667085;
+
+    font-size: 14px;
+}
+
+.auth-form {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    background: transparent;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #374151;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin: 0;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: #c8102e;
+
+    box-shadow:
+        0 0 0 3px rgba(200, 16, 46, 0.10);
+}
+
+.auth-form button {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 13px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #c8102e;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.auth-form button:hover {
+    background: #a80d26;
+
+    transform: translateY(-1px);
+}
+
+.auth-footer {
+    margin-top: 25px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid #e5e7eb;
+
+    text-align: center;
+}
+
+.auth-footer p {
+    display: inline;
+
+    color: #667085;
+
+    font-size: 14px;
+}
+
+.auth-footer a {
+    margin-left: 5px;
+
+    color: #c8102e;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- LOGIN NO CELULAR ---------- */
+
+@media (max-width: 500px) {
+
+    .auth-page {
+        padding: 20px 0;
+    }
+
+    .auth-card {
+        padding: 30px 22px;
+
+        border-radius: 12px;
+    }
+
+    .auth-header h1 {
+        font-size: 26px;
+    }
+
+}
