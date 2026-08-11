@@ -15,39 +15,36 @@ export class NoticiaController {
         });
     }
 
-    buscar(req: Request, res: Response): void {
+   buscar(req: Request, res: Response): void {
 
-        const id = Number(req.params.id);
+    const id = Number(req.params.id);
 
-        const noticia = repository.buscarPorId(id);
+    const noticia = repository.buscarPorId(id);
 
-        if (!noticia) {
-            res.status(404).send("Notícia não encontrada.");
-            return;
-        }
-
-        switch (id) {
-
-            case 1:
-                res.render("noticia1", { noticia });
-                break;
-
-            case 2:
-                res.render("noticia2", { noticia });
-                break;
-
-            case 3:
-                res.render("noticia3", { noticia });
-                break;
-
-            default:
-                res.render("noticiadetalhe", {
-                    noticia
-                });
-                break;
-        }
+    if (!noticia) {
+        res.status(404).send("Notícia não encontrada.");
+        return;
     }
 
+    switch (id) {
+
+        case 1:
+            res.render("noticia1", { noticia });
+            break;
+
+        case 2:
+            res.render("noticia2", { noticia });
+            break;
+
+        case 3:
+            res.render("noticia3", { noticia });
+            break;
+
+        default:
+            res.render("noticiadetalhe", { noticia });
+            break;
+    }
+}
     cadastrar(req: Request, res: Response): void {
 
         const noticia = Noticia.fromJSON(req.body);
