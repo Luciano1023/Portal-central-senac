@@ -31,11 +31,16 @@ export class UsuarioController {
 
     cadastrar(req: Request, res: Response): void {
 
+        const foto = req.file
+            ? `/uploads/${req.file.filename}`
+            : "/img/default-profile.png";
+
         const usuario = new Usuario(
             0,
             req.body.nome,
             req.body.email,
-            req.body.senha
+            req.body.senha,
+            foto
         );
 
         repository.adicionar(usuario);
@@ -47,11 +52,23 @@ export class UsuarioController {
 
         const id = Number(req.params.id);
 
+        const usuarioExistente = repository.buscar(id);
+
+        if (!usuarioExistente) {
+            res.status(404).send("Usuário não encontrado.");
+            return;
+        }
+
+        const foto = req.file
+            ? `/uploads/${req.file.filename}`
+            : usuarioExistente.getFoto();
+
         const usuario = new Usuario(
             id,
             req.body.nome,
             req.body.email,
-            req.body.senha
+            req.body.senha,
+            foto
         );
 
         const atualizado = repository.editar(id, usuario);
