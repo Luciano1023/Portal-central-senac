@@ -30,11 +30,16 @@ export class AuthController {
 
         const senhaHash = await bcrypt.hash(senha, 10);
 
+        const foto = req.file
+            ? `/html/img/${req.file.filename}`
+            : "/html/img/default-profile.png";
+
         const usuario = new Usuario(
             0,
             nome,
             email,
-            senhaHash
+            senhaHash,
+            foto
         );
 
         repository.adicionar(usuario);

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { AuthController } from "../Controller/AuthController";
+import { upload } from "../config/multer";
 
 export const authRoutes = Router();
 
@@ -20,10 +21,14 @@ authRoutes.get("/cadastro", (req, res) => {
     res.render("cadastro");
 });
 
-// Realizar cadastro
-authRoutes.post("/cadastro", (req, res) => {
-    controller.cadastrar(req, res);
-});
+// Realizar cadastro com foto
+authRoutes.post(
+    "/cadastro",
+    upload.single("foto"),
+    (req, res) => {
+        controller.cadastrar(req, res);
+    }
+);
 
 // Realizar logout
 authRoutes.post("/logout", (req, res) => {
