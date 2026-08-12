@@ -8,6 +8,8 @@ import categoriaRoutes from "./routes/categoriaRoutes";
 import NoticiaRoutes from "./routes/NoticiaRoutes";
 import { usuarioRoutes } from "./routes/UsuarioRoutes";
 
+import { usuarioRepository } from "./Repositories/UsuarioRepository";
+
 const app = express();
 
 // =========================
@@ -26,7 +28,33 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(sessionConfig);
 
-// Arquivos estáticos (CSS, imagens, JS)
+// =========================
+// Usuário logado
+// =========================
+
+app.use((req, res, next) => {
+
+    if (req.session.usuarioId) {
+
+        const usuario = usuarioRepository.buscar(
+            req.session.usuarioId
+        );
+
+        res.locals.usuarioLogado = usuario;
+
+    } else {
+
+        res.locals.usuarioLogado = undefined;
+
+    }
+
+    next();
+});
+
+// =========================
+// Arquivos estáticos
+// =========================
+
 app.use(express.static(publicPath));
 
 // =========================

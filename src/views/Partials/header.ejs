@@ -27,9 +27,44 @@
             </nav>
 
             <div class="header-actions">
-                <a href="/auth/login" class="login-button">
-                    Entrar
-                </a>
+
+                <% if (usuarioLogado) { %>
+
+                    <div class="user-menu">
+
+                        <img
+                            src="<%= usuarioLogado.getFoto() %>"
+                            alt="Foto de <%= usuarioLogado.getNome() %>"
+                            class="profile-picture"
+                        >
+
+                        <span class="profile-name">
+                            <%= usuarioLogado.getNome() %>
+                        </span>
+
+                        <form
+                            action="/auth/logout"
+                            method="POST"
+                            class="logout-form"
+                        >
+                            <button type="submit">
+                                Sair
+                            </button>
+                        </form>
+
+                    </div>
+
+                <% } else { %>
+
+                    <a
+                        href="/auth/login"
+                        class="login-button"
+                    >
+                        Entrar
+                    </a>
+
+                <% } %>
+
             </div>
 
         </div>
