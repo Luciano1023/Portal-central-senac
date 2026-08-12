@@ -53,7 +53,11 @@ const fileFilter: multer.Options["fileFilter"] = (
         return;
     }
 
-    cb(new Error("Apenas imagens JPG, JPEG, PNG e WEBP são permitidas."));
+    cb(
+        new Error(
+            "Apenas imagens JPG, JPEG, PNG e WEBP são permitidas."
+        )
+    );
 };
 
 export const upload = multer({

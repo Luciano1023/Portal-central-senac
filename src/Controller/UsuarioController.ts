@@ -31,10 +31,9 @@ export class UsuarioController {
 
     cadastrar(req: Request, res: Response): void {
 
-        const foto = req.file
-            ? `/uploads/${req.file.filename}`
-            : "/img/default-profile.png";
-
+       const foto = req.file
+    ? `/html/img/${req.file.filename}`
+    : "/html/img/default-profile.png";
         const usuario = new Usuario(
             0,
             req.body.nome,
