@@ -1,63 +1,162 @@
-<link rel="stylesheet" href="/css/style.css">
+<%- include("Partials/header") %>
 
-<nav>
-    <ul>
-        <li><a href="/">Início</a></li>
-        <li><a href="/categorias">Categorias</a></li>
-        <li><a href="/noticias">Notícias</a></li>
-        <li><a href="/usuarios">Usuários</a></li>
-    </ul>
-</nav>
+<main class="home">
 
-<h2>Últimas Notícias</h2>
+    <!-- HERO -->
+    <section class="hero">
 
-<% if (noticias && noticias.length > 0) { %>
+        <div class="hero-text">
 
-    <div class="cards">
+            <span class="hero-tag">
+                CENTRAL SENAC
+            </span>
 
-        <% noticias.forEach(function(noticia){ %>
-
-            <div class="card">
-
-                <img
-                    src="<%= noticia.getImagem() %>"
-                    alt="<%= noticia.getTitulo() %>"
-                >
-
-                <div class="card-content">
-
-                    <h2><%= noticia.getTitulo() %></h2>
-
-                    <p>
-                        <%= noticia.getConteudo() %>
-                    </p>
-
-                    <a href="/noticias/<%= noticia.getId() %>">
-                        Ler notícia
-                    </a>
-
-                </div>
-
-            </div>
-
-        <% }) %>
-
-    </div>
-
-<% } else { %>
-
-    <div class="card">
-
-        <div class="card-content">
-
-            <h2>Bem-vindo ao Central Senac</h2>
+            <h1>
+                Informação que acontece dentro da nossa escola.
+            </h1>
 
             <p>
-                Ainda não existem notícias cadastradas.
+                Acompanhe as principais notícias e acontecimentos
+                do cotidiano do SENAC.
             </p>
 
         </div>
 
-    </div>
+    </section>
 
-<% } %>
+
+    <% if (noticias && noticias.length > 0) { %>
+
+        <!-- DESTAQUE -->
+        <section class="featured-section">
+
+            <div class="section-heading">
+                <span></span>
+                <h2>Notícia em destaque</h2>
+            </div>
+
+            <article class="featured-news">
+
+                <div class="featured-image">
+
+                    <img
+                        src="<%= noticias[0].getImagem() %>"
+                        alt="<%= noticias[0].getTitulo() %>"
+                    >
+
+                </div>
+
+                <div class="featured-content">
+
+                    <span class="news-label">
+                        DESTAQUE
+                    </span>
+
+                    <h2>
+                        <%= noticias[0].getTitulo() %>
+                    </h2>
+
+                    <p>
+                        <%= noticias[0].getConteudo() %>
+                    </p>
+
+                    <a
+                        href="/noticias/<%= noticias[0].getId() %>"
+                        class="read-more"
+                    >
+                        Ler matéria
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ÚLTIMAS NOTÍCIAS -->
+        <section class="latest-news">
+
+            <div class="section-heading">
+
+                <span></span>
+
+                <h2>
+                    Últimas notícias
+                </h2>
+
+            </div>
+
+
+            <div class="news-grid">
+
+                <% noticias.slice(1).forEach(function(noticia){ %>
+
+                    <article class="news-card">
+
+                        <div class="news-card-image">
+
+                            <img
+                                src="<%= noticia.getImagem() %>"
+                                alt="<%= noticia.getTitulo() %>"
+                            >
+
+                        </div>
+
+                        <div class="news-card-content">
+
+                            <span class="news-label">
+                                NOTÍCIA
+                            </span>
+
+                            <h3>
+                                <%= noticia.getTitulo() %>
+                            </h3>
+
+                            <p>
+                                <%= noticia.getConteudo() %>
+                            </p>
+
+                            <a
+                                href="/noticias/<%= noticia.getId() %>"
+                                class="read-more"
+                            >
+                                Ler matéria
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                <% }) %>
+
+            </div>
+
+        </section>
+
+
+    <% } else { %>
+
+        <section class="empty-news">
+
+            <div class="empty-icon">
+                📰
+            </div>
+
+            <h2>
+                Nenhuma notícia disponível
+            </h2>
+
+            <p>
+                Ainda não existem notícias cadastradas no Central Senac.
+            </p>
+
+        </section>
+
+    <% } %>
+
+</main>
+
+<%- include("Partials/footer") %>
