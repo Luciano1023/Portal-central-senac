@@ -3,7 +3,8 @@ export class Usuario {
         private id: number,
         private nome: string,
         private email: string,
-        private senha: string
+        private senha: string,
+        private foto: string = "/img/default-profile.png"
     ) {}
 
     public getId(): number {
@@ -20,6 +21,10 @@ export class Usuario {
 
     public getSenha(): string {
         return this.senha;
+    }
+
+    public getFoto(): string {
+        return this.foto;
     }
 
     public setNome(nome: string): void {
@@ -46,12 +51,17 @@ export class Usuario {
         this.senha = senha;
     }
 
+    public setFoto(foto: string): void {
+        this.foto = foto;
+    }
+
     public toJSON() {
         return {
             id: this.id,
             nome: this.nome,
             email: this.email,
-            senha: this.senha
+            senha: this.senha,
+            foto: this.foto
         };
     }
 
@@ -60,7 +70,8 @@ export class Usuario {
             obj.id,
             obj.nome,
             obj.email,
-            obj.senha
+            obj.senha,
+            obj.foto || "/img/default-profile.png"
         );
     }
 }
